@@ -1,0 +1,42 @@
+git status：查看仓库状态（整体角度，看有哪些变化）
+git diff：查看具体发生了什么变化
+	working tree工作区；index暂存区；head提交区
+			    提交到暂存区中，就是建立索引。HEAD是指最新的一次提交。
+	比较working tree工作区和index暂存区之间的差异
+	git diff --cached/--staged
+		比较暂存区文件和提交区的差异
+		--staged is a synonym of --cached
+	git diff HEAD
+		显示工作区和提交区的差异
+	git diff SHA1 SHA2
+		比较两个历史版本之间的差异
+“提交新文件”/“提交修改”
+	1.git add
+	2.git commit
+“撤销”
+	“版本回退”/“撤销暂存区的修改”
+		git reset --hard commit_id
+		“查看commit_id”
+			git log：查看提交历史
+			git reflog：查看命令历史。
+				在回退后，想撤销这个动作时，用这个命令可以查到撤销前的commit_id
+	“暂存区”
+		git add将git仓库中所有的变化，保存到暂存区
+	“丢弃工作区的修改”
+		git checkout -- <file>
+			让文件回到最近一次git commit或git add时的状态。
+			没有“--”的话，变成了“切换分支”的命令
+			本质：用版本库里的版本替换工作区的版本。
+“删除”
+	1.git rm <file>
+	2.git commit
+
+“关联远程仓库”
+	git remote add origin XXX
+“推送本地库的所有内容到远程库”
+	git push -u origin master
+		-u参数：把本地的master分支和远程的master分支关联起来。
+“从远程库克隆”
+	git clone XXX
+
+---------------------------------------------分支管理------------------------------------
