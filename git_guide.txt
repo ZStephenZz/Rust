@@ -1,3 +1,8 @@
+git community book
+	http://gitbook.liuhui998.com/index.html   
+
+
+
 git status：查看仓库状态（整体角度，看有哪些变化）
 git diff：查看具体发生了什么变化
 	working tree工作区；index暂存区；head提交区
@@ -40,3 +45,57 @@ git diff：查看具体发生了什么变化
 	git clone XXX
 
 ---------------------------------------------分支管理------------------------------------
+“创建分支”
+	git checkout -b XXX
+	-b参数：创建并切换到新分支
+		相当与：1.git branch XXX  2.git checkout XXX
+	git branch XXX
+	创建新分支
+
+流程：创建新分支->切换到新分支，工作，提交->切换到主分支->把新分支的内容合并到主分支
+
+“合并指定分支到当前分支”
+	1.git branch 当前分支
+	2.git merge 指定分支
+	
+	git merge和git merge --no-ff的区别：
+		--no-ff参数：使用普通模式合并。合并后的历史有分支，能看出来曾做过合并。
+
+“删除分支”
+	git branch -d XXX
+	git branch -D XXX   丢弃一个没有被合并过的分支
+
+合并时有冲突
+	“查看冲突”
+		git status
+	“修改冲突”
+		git使用“<<<<<<<，=======，>>>>>>>”在本件中标记出不同分支的内容
+	“再次提交”
+
+git stash三连
+	“闪存当前工作内容”
+		git stash
+		使用场景：不好提交当前分支的内容，又需要创建新分支解决bug。
+	“恢复闪存的内容”
+		1.git stash apply  恢复  2.git stash drop  删除
+		1.git stash pop  恢复并删除stash内容
+	“查看闪存的内容”
+		git stash list
+
+“复制所做的修改到其他分支”
+	场景：dev、master分支上有相同的bug，现在在dev分支上修复了bug，不想在master上重复劳动
+	解决：git cherry-pick commit_id（复制一个指定commit到当前分支）
+
+--------------------------------------------多人协作---------------------------------------------
+“查看远程库信息”
+	git remote
+	git remote -v
+
+“推送分支”
+	1.git checkout <branch_name> 切换到想推送的本地分支
+	2.git push origin <branch_name>
+
+“关联本地分支和远程分支”
+	git branch --set-upstream-to=<remote_branch> <local_branch>
+
+
