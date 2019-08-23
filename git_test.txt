@@ -1,3 +1,7 @@
 Git is a distributed version control system.
 Git is free software.
-ctreating new branch on master
+<<<<<<< HEAD
+ctreating new branch
+=======
+creating a new branch
+>>>>>>> feature1
